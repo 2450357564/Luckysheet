@@ -6949,3 +6949,16 @@ export function openSearchDialog(source = 1){
     luckysheetSearchReplace.init();
     $("#luckysheet-search-replace #searchInput input").focus();
 }
+
+/** 自定义方法 */
+
+/**
+ * 复制公式
+ * @param  {String} txt  公式（例如：=SUM(A1:A2)）
+ * @param  {String} mode 模式，down / up / right / left
+ * @param  {Number} step 步长
+ * @return {String}      不带最前面的=的公式（例如：SUM(A1:A2)）
+ */
+export function copyFormula(txt, mode, step) {
+    return luckysheetformula.functionCopy(txt, mode, step)
+}
