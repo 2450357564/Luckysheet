@@ -247,11 +247,10 @@ export function setCellValue(row, column, value, options = {}) {
 
     }, 0);
 
-    if(file.index == Store.currentSheetIndex && isRefresh){
-        jfrefreshgrid(data, [{ "row": [row, row], "column": [column, column] }]);//update data, meanwhile refresh canvas and store data to history
-    }
-    else{
-        file.data = data;//only update data
+    if (file.index == Store.currentSheetIndex && isRefresh) {
+      jfrefreshgrid(data, [{ "row": [row, row], "column": [column, column] }]);//update data, meanwhile refresh canvas and store data to history
+    } else {
+      Store.flowdata = data; //only update data
     }
 
     if (success && typeof success === 'function') {
@@ -3446,6 +3445,10 @@ export function cancelRangeMerge(options = {}) {
     else{
         file.data = data;
         file.config = cfg;
+    }
+
+    if (success && typeof success === 'function') {
+      success();
     }
 }
 
